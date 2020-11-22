@@ -1,0 +1,41 @@
+{% extends 'register_base.html' %}
+{%  load static %}
+{% block content %}
+    <style>
+    .regScreen{
+        width: 450px;
+        height: 300px;
+        color: #c8deff;
+        padding: 10px 40px;
+        position: absolute;
+        bottom: 20%;
+    }
+    .helptext, li{
+        display: none;
+    }
+    </style>
+    <div class="regScreen">
+        <h1>Registration</h1>
+
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ my_form.as_p }}
+            <input type="submit" value="Register" style="letter-spacing: 0px;
+                       width: 120px;background: rgb(115,158,225);
+                       color: #fff; float: left; padding: 5px;
+                       font-family: 'Press Start 2P', cursive;">
+            <a href="{% url 'accounts:login' %}" title="if you have account">
+
+                <button type="button" style="letter-spacing: 0px;
+                       width: 90px;background: rgb(115,158,225);
+                       color: #fff; float: left; padding: 5px;
+                       font-family: 'Press Start 2P', cursive;
+                        float: right;">
+                    Login
+                </button>
+            </a>
+        <br>
+        <br>
+        </form>
+    </div>
+{% endblock %}

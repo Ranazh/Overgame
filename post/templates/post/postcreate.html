@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <style>
+    .screenAdd{
+        background-color: rgba(0, 9, 28, 0.91);
+        width: 60%;
+        margin-left: 20%;
+        padding: 5% 5% 8%;
+        border: 20px solid #83d0d1;
+        font-family: 'Press Start 2P', cursive;
+    }
+    h1{
+        font-family: 'Press Start 2P', cursive;
+        margin-bottom: 20px;
+    }
+    p{
+        font-family: 'Press Start 2P', cursive;
+    }
+    .helptext{
+        font-size: 60%;
+    }
+    .favourite{
+        float: right;
+        margin-top: -50px;
+        margin-right: -50px;
+        width: 50px;
+    }
+    </style>
+        <div class="screenAdd">
+            {% block create %}
+                <a href="{% url 'accounts:user' %}" title="Return to Profile">
+                    <img src="{% static 'images/review.png' %}" class="favourite">
+                </a>
+                <h1>Add Game : </h1>
+                <form method="post" enctype="multipart/form-data">
+
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <input type="submit"  style="letter-spacing: 0px; width: 150px;background: rgb(115,158,225); color: #fff; float: left; padding: 5px; font-family: 'Press Start 2P', cursive;" value="ADD POST">
+
+                </form>
+            {% endblock %}
+        </div>
+{%  endblock %}
